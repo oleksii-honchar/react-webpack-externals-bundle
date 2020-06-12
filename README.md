@@ -1,2 +1,5 @@
 # react-webpack-externals-bundle
-r&amp;d on external libs for react with webpack
+
+R&d how to get most of the libs load via cdn in order to have small vendor  bundle
+
+
