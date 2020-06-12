@@ -7,14 +7,14 @@ const appConfig: AppConfig = {
   config: {
     logLevel: process.env.LOG_LEVEL,
     isNode: false,
-    startApp: true
-  }
+    startApp: true,
+  },
 };
 
 export const AppConfigContext = React.createContext<AppConfig>(appConfig);
 
 export const AppConfigProvider: FunctionComponent<{ children: any }> = ({
-  children
+  children,
 }) => {
   return (
     <AppConfigContext.Provider value={appConfig}>

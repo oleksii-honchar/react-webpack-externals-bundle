@@ -7,7 +7,7 @@ import { LoggerService } from "@ciklum/logan";
 
 import { AppConfigProvider } from "@contexts/app-config-context";
 
-import { Index } from "./pages/Index";
+import { Index } from "./pages/Index/Index";
 
 window.config = { logLevel: process.env.LOG_LEVEL };
 
