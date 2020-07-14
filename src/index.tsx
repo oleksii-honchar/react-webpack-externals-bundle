@@ -1,5 +1,3 @@
-import "react-app-polyfill/ie11";
-// import 'core-js';
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // @ts-ignore
@@ -7,7 +5,7 @@ import { LoggerService } from "@ciklum/logan";
 
 import { AppConfigProvider } from "@contexts/app-config-context";
 
-import { Index } from "./pages/Index/Index";
+import { Home } from "./pages/Home/Home";
 
 window.config = { logLevel: process.env.LOG_LEVEL };
 
@@ -21,7 +19,7 @@ function startApp(): void {
 
   const app = (
     <AppConfigProvider>
-      <Index />
+      <Home />
     </AppConfigProvider>
   );
 

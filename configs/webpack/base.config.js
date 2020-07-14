@@ -64,11 +64,15 @@ module.exports = (env) => {
         debug: process.env.NODE_ENV !== "production",
         minimize: process.env.NODE_ENV === "production"
       }),
-      new CopyWebpackPlugin([{
-        from: "./src/assets",
-        to: ".",
-        ignore: [ "*.hbs", ".DS_Store" ],
-      }]),
+      new CopyWebpackPlugin({
+        patterns: [{
+          from: "./src/assets",
+          to: ".",
+          globOptions: {
+            ignore: [ "**/*.hbs", ".DS_Store" ],
+          }
+        }]
+      }),
     ],
     node: false,
     watchOptions: {

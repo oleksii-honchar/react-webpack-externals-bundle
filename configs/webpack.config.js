@@ -1,4 +1,4 @@
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // Short usage reference
@@ -26,22 +26,22 @@ module.exports = (env) => {
   const envES2020 = { ...env, TS_TARGET: 'es20'};
 
   let configs = [ baseCfg(envES2015), baseCfg(envES2020) ];
-  configs[0] = webpackMerge(configs[0], moduleCfg(envES2015));
-  configs[1] = webpackMerge(configs[1], moduleCfg(envES2020));
+  configs[0] = merge(configs[0], moduleCfg(envES2015));
+  configs[1] = merge(configs[1], moduleCfg(envES2020));
 
-  configs[0] = webpackMerge(configs[0], externalsCfg);
-  configs[1] = webpackMerge(configs[1], externalsCfg);
+  configs[0] = merge(configs[0], externalsCfg);
+  configs[1] = merge(configs[1], externalsCfg);
 
   if (env.BUILD_ANALYZE === 'true') {
     console.log('[config:webpack] bundle analyzer included');
 
-    configs = configs.map((cfg) => webpackMerge(cfg, {
+    configs = configs.map((cfg) => merge(cfg, {
       plugins: [ new BundleAnalyzerPlugin() ]
     }));
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    configs = configs.map((cfg) => webpackMerge(cfg, {
+    configs = configs.map((cfg) => merge(cfg, {
       devtool: 'inline-source-map',
     }));
 
@@ -50,7 +50,7 @@ module.exports = (env) => {
     return configs;
   }
 
-  configs = configs.map((cfg) => webpackMerge(cfg, prodCfg));
+  configs = configs.map((cfg) => merge(cfg, prodCfg));
 
   console.log('[config:webpack] config composition completed');
   return configs;

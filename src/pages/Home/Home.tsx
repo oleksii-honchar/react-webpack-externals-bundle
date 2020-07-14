@@ -2,7 +2,7 @@ import React, { ReactElement, useContext, Fragment } from "react";
 
 import { AppConfigContext } from "@contexts/app-config-context";
 
-export function Index(): ReactElement {
+export function Home(): ReactElement {
   const { name, version } = useContext(AppConfigContext);
 
   return (
